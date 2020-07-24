@@ -25,7 +25,7 @@ public class FormIngreso extends javax.swing.JFrame {
         initComponents();
         
         cuentas = new Cuentas[5];
-        cuentas[0] = new Cuentas(1203, "23k3");
+        cuentas[0] = new Cuentas(1, "1");
         cuentas[1] = new Cuentas(1204, "23k2");
         cuentas[2] = new Cuentas(1205, "23k1");
         cuentas[3] = new Cuentas(1206, "23k4");
@@ -48,11 +48,15 @@ public class FormIngreso extends javax.swing.JFrame {
         jtextNumeroCuenta = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         JtextContrasenia = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(153, 153, 153));
 
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Numero Cuenta");
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectocajeroutn/log_logout_door_1563.png"))); // NOI18N
         jButton1.setText("Ingresar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,6 +70,7 @@ public class FormIngreso extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel2.setText("PIN");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -78,7 +83,7 @@ public class FormIngreso extends javax.swing.JFrame {
                     .addComponent(JtextContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jtextNumeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtextNumeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addContainerGap(70, Short.MAX_VALUE))
         );
@@ -98,19 +103,28 @@ public class FormIngreso extends javax.swing.JFrame {
                 .addContainerGap(42, Short.MAX_VALUE))
         );
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectocajeroutn/loginmanager_10029.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -135,17 +149,17 @@ public class FormIngreso extends javax.swing.JFrame {
         for (int i = 0; i < 5; i++) {
             if (cuentas[i].getNumeroCuenta() == numeroCuenta) {
                 if (contrasenia.equals(cuentas[i].getContrasenia())) {
-                    JOptionPane.showMessageDialog(null, "Bienvenido");
+                    JOptionPane.showMessageDialog(this, "Bienvenido");
                     return true;
                 }else{
-                    JOptionPane.showMessageDialog(null, "Contrenia Incorrecta");
+                    JOptionPane.showMessageDialog(this, "Contrenia Incorrecta");
                 }
             }else{
                numeroCuentaValido = false;
             }
         }
         if (!numeroCuentaValido) {
-            JOptionPane.showMessageDialog(null, "Cuenta no valida \n Vuelve a ingresar los datos");
+            JOptionPane.showMessageDialog(this, "Cuenta no valida \n Vuelve a ingresar los datos");
         }
         return false;
         
@@ -191,6 +205,7 @@ public class FormIngreso extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jtextNumeroCuenta;
     // End of variables declaration//GEN-END:variables

@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  * @author William
  */
 public class Menu_principal extends javax.swing.JFrame {
-
+    
     private String transaccion = "";
 
     /**
@@ -23,6 +23,8 @@ public class Menu_principal extends javax.swing.JFrame {
     public Menu_principal() {
         initComponents();
         enabledBotones(false);
+        btnComprar.setEnabled(false);
+                
         monto = "";
     }
 
@@ -43,6 +45,7 @@ public class Menu_principal extends javax.swing.JFrame {
         btnRetirar = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
         btnDolares = new javax.swing.JButton();
+        btnComprar = new javax.swing.JButton();
         panelNumeros = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -72,7 +75,7 @@ public class Menu_principal extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setForeground(new java.awt.Color(0, 255, 0));
         jTextArea1.setRows(5);
-        jTextArea1.setText("            [Cajero automatico]\n  <-- Depositar Dinero\n                                         Dolares-->\n\n                             Retirar Dinero -->\n   \n  <-- Ver balance             Salir   --->");
+        jTextArea1.setText("            [Cajero automatico]\n  <-- Depositar Dinero\n\n                                         Dolares-->\n\n                             Retirar Dinero -->\n   \n  <-- Ver balance             Salir   --->");
         jScrollPane1.setViewportView(jTextArea1);
 
         jPanel5.setBackground(new java.awt.Color(51, 51, 51));
@@ -113,6 +116,17 @@ public class Menu_principal extends javax.swing.JFrame {
             }
         });
 
+        btnComprar.setBackground(new java.awt.Color(102, 255, 102));
+        btnComprar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnComprar.setForeground(new java.awt.Color(102, 102, 102));
+        btnComprar.setText("    ");
+        btnComprar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnComprar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComprarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -120,20 +134,24 @@ public class Menu_principal extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnComprar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDolares, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRetirar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRetirar, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
                     .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnComprar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDolares)
                 .addGap(7, 7, 7)
                 .addComponent(btnRetirar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnVolver)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelNumeros.setBackground(new java.awt.Color(51, 51, 51));
@@ -272,9 +290,9 @@ public class Menu_principal extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelNumeros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -321,9 +339,9 @@ public class Menu_principal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(btnDepositar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(btnBalance)
-                .addGap(38, 38, 38))
+                .addGap(31, 31, 31))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -384,12 +402,12 @@ public class Menu_principal extends javax.swing.JFrame {
         btnVolver.setText("Volver");
         btnBalance.setEnabled(false);
         btnDepositar.setEnabled(false);
-
+        
         if (btnRetirar.getText().equals("Aceptar")) {
             jTextArea1.setText("Esta seguro que desea retirar \n> " + monto + " ?");
             enabledBotones(false);
             btnRetirar.setText("Si");
-
+            
         } else if (btnRetirar.getText().equals("Si")) {
             String estado = "Retirado";
             try {
@@ -397,19 +415,19 @@ public class Menu_principal extends javax.swing.JFrame {
                 //ProyectoCajeroUTN.cuentas[FormIngreso.numeroUsuario ].setMonto( ProyectoCajeroUTN.cuentas[FormIngreso.numeroUsuario ].getMonto()-Integer.parseInt(monto));
                 btnRetirar.setEnabled(false);
             } catch (Exception e) {
-
+                
                 estado = "No retirado " + e;
-
+                
             } finally {
                 jTextArea1.setText("Monto " + estado + " \n> " + monto + " \n presiona el boton Volver para salir \n");
             }
-
+            
         } else {
             enabledBotones(true);
             jTextArea1.setText("Retirar Dinero \n ingresa la cantidad de dinero \nque quieres retirar \n> " + monto);
             btnRetirar.setText("Aceptar");
         }
-
+        
 
     }//GEN-LAST:event_btnRetirarActionPerformed
 
@@ -417,7 +435,7 @@ public class Menu_principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         monto += 1 + "";
         jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto);
-
+        
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -478,7 +496,9 @@ public class Menu_principal extends javax.swing.JFrame {
         btnVolver.setText("Volver");
         btnBalance.setEnabled(false);
         btnRetirar.setEnabled(false);
-
+        btnDolares.setEnabled(false);
+        btnComprar.setEnabled(false);
+        
         if (btnDepositar.getText().equals("Aceptar")) {
             jTextArea1.setText("Esta seguro que desea Depositar \n> " + monto + " ?");
             enabledBotones(false);
@@ -491,7 +511,7 @@ public class Menu_principal extends javax.swing.JFrame {
                 btnDepositar.setEnabled(false);
             } catch (Exception e) {
                 estado = "No retirado ";
-
+                
             } finally {
                 jTextArea1.setText("Monto " + estado + " \n> " + monto + " \n presiona el boton Volver para salir \n");
             }
@@ -499,38 +519,44 @@ public class Menu_principal extends javax.swing.JFrame {
             enabledBotones(true);
             monto = "";
             jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad de dinero que quieres retirar \n> " + monto);
-
+            
             btnDepositar.setText("Aceptar");
         }
 
     }//GEN-LAST:event_btnDepositarActionPerformed
-
+    
     private void enabledBotones(boolean estado) {
         jButton2.setEnabled(estado);
         jButton3.setEnabled(estado);
         jButton4.setEnabled(estado);
         jButton5.setEnabled(estado);
-
+        
         jButton6.setEnabled(estado);
         jButton7.setEnabled(estado);
         jButton8.setEnabled(estado);
         jButton9.setEnabled(estado);
-
+        
         jButton10.setEnabled(estado);
         jButton11.setEnabled(estado);
         jButton12.setEnabled(estado);
         jButton13.setEnabled(estado);
-
+        
     }
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         // TODO add your handling code here:
         btnRetirar.setEnabled(true);
         btnBalance.setEnabled(true);
         btnDepositar.setEnabled(true);
+        btnComprar.setEnabled(false);
+        btnDolares.setEnabled(true);
+               
+        btnComprar.setText("   ");
         btnRetirar.setText("Retirar");
         btnDepositar.setText("Depositar");
+        btnDolares.setText("Dolares");
+        btnComprar.setText("  ");
         enabledBotones(false);
-
+        
         if (btnVolver.getText().equals("Salir")) {
             new FormIngreso().setVisible(true);
             this.dispose();
@@ -545,7 +571,7 @@ public class Menu_principal extends javax.swing.JFrame {
                     + "   \n"
                     + "  <-- Ver balance             Salir   --->");
         }
-
+        
 
     }//GEN-LAST:event_btnVolverActionPerformed
 
@@ -553,29 +579,69 @@ public class Menu_principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         btnRetirar.setEnabled(false);
         btnDepositar.setEnabled(false);
+        btnComprar.setEnabled(false);
+        btnDolares.setEnabled(false);
         btnVolver.setText("Volver");
         jTextArea1.setText("El balance de la cuenta es de \n >" + ProyectoCajeroUTN.cuentas[FormIngreso.numeroUsuario].getMonto() + "\n Presiona el boton Volver\n Para regresar al menu principal");
 
     }//GEN-LAST:event_btnBalanceActionPerformed
-
+    
     private void menuDolares() {
-        jTextArea1.setText("   Menu Dolares  \n Comprar  \n Vender ");
+        float montoCuentaDolares = ProyectoCajeroUTN.cuentas[FormIngreso.numeroUsuario].getDolares().getMonto();
+        jTextArea1.setText("   Menu Dolares  \nmonto cuenta " + montoCuentaDolares + "\nComprar--> \n Vender--> ");
     }
+
+    private void menuComparDolares() { // menu para poder comprar dolares
+        transaccion = "La compra esta a 580 \nDolares la cantidad del ";
+        jTextArea1.setText("         [Compra Dolares] \n"
+                + "Ingresa el monto\n>");
+        enabledBotones(true);
+        
+    }
+    
     private void btnDolaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDolaresActionPerformed
         // desactivamos los botones
         btnVolver.setText("Volver");
         btnBalance.setEnabled(false);
         btnRetirar.setEnabled(false);
         btnDepositar.setEnabled(false);
-
+        
         if (ProyectoCajeroUTN.cuentas[FormIngreso.numeroUsuario].getDolares() != null) { // en caso de que ya se tenga una cuenta en dolares
             menuDolares();
+            btnDolares.setText("Vender");
+            btnComprar.setText("Comprar");
+            btnComprar.setEnabled(true);
+            
         } else { // en caso de que no se tenga una cuenta dolares se le debe de crear
             ProyectoCajeroUTN.cuentas[FormIngreso.numeroUsuario].setDolares(new CuentaDolares(0, "-", 0, FormIngreso.numeroUsuario));
-            jTextArea1.setText("      Menu Dolares \nSe esta creando su cuenta\nen dolares a quedado, \nasociada a esta cuenta\npresiona nuevamente el boton\nDolares");
+            jTextArea1.setText("       Menu Dolares \nSe esta creo su cuenta \nen dolares a quedado asociada\n a esta cuenta\n>presiona nuevamente el boton\nDolares");
         }
-
     }//GEN-LAST:event_btnDolaresActionPerformed
+
+    private void btnComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprarActionPerformed
+        // TODO add your handling code here:
+        
+        if (btnComprar.getText().equals("Comprar")) {
+            btnVolver.setText("Volver");
+            btnBalance.setEnabled(false);
+            btnRetirar.setEnabled(false);
+            btnDepositar.setEnabled(false);            
+            menuComparDolares();
+            btnComprar.setText("Aceptar");
+            
+        } else if (btnComprar.getText().equals("Aceptar")) {
+            enabledBotones(false);
+            try {
+                btnComprar.setEnabled(false);
+                btnDolares.setEnabled(false);
+                ProyectoCajeroUTN.cuentas[FormIngreso.numeroUsuario].getDolares().comprarDolares(Float.parseFloat(monto));
+                jTextArea1.setText("Se compraron " + monto + " Dolares\n se descontaron de tu\ncuenta en colones \n>presiona el boton Volver");
+            } catch (Exception ex) {
+                jTextArea1.setText("No se ha podido llevar a cabo por\n" + ex + "\npresiona volver");
+            }
+        }
+        
+    }//GEN-LAST:event_btnComprarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -611,11 +677,12 @@ public class Menu_principal extends javax.swing.JFrame {
             }
         });
     }
-
+    
     private String monto;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBalance;
+    private javax.swing.JButton btnComprar;
     private javax.swing.JButton btnDepositar;
     private javax.swing.JButton btnDolares;
     private javax.swing.JButton btnRetirar;

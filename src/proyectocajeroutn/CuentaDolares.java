@@ -36,11 +36,12 @@ public class CuentaDolares extends Cuentas{
      * @param montoCompra 
      * recibe como paramtro la cantidad de compra
      */
-    public void comprarDolares(float montoCompra){
-        if ( montoCompra <= getMonto() / cambio ) {
-            setMonto(montoCompra);
-            
-            ProyectoCajeroUTN.cuentas[id].setMonto(montoCompra * cambio); // se le rebaja de la cuenta colones u original
+    public void comprarDolares(float montoCompra) throws Exception{
+        if ( montoCompra <= ProyectoCajeroUTN.cuentas[id].getMonto() / cambio ) {  // si el monto de la compra es menor a nuestro cuenta de colones en conversion colones         
+            depositar(montoCompra);
+            ProyectoCajeroUTN.cuentas[id].retirar(montoCompra * cambio); // se le rebaja de la cuenta colones u original
+        }else{
+            throw new Exception("\nNo tienes los fondos necesarios\n");
         }
     }
     /**
@@ -48,12 +49,16 @@ public class CuentaDolares extends Cuentas{
      * @param montoVender 
      * recibe el monto que se quiere vender
      */
-    public void venderDolares( float montoVender){
+    public void venderDolares( float montoVender)throws Exception{
         if (getMonto() >0) { // en caso de que se tenga saldo en la cuenta
             if (montoVender <= getMonto()) { // si el monto actual de la cuenta es superior o igual a la venta
                 ProyectoCajeroUTN.cuentas[id].depositar(montoVender*cambio);
                 setMonto(getMonto()-montoVender);
+            }else{
+                throw new Exception("No tienes los fondos suficientes\nPara realizar la operacion");
             }
+        }else{
+            throw new Exception("No tienes los recursos suficientes");
         }
     }
     

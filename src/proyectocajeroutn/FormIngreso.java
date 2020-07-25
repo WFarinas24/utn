@@ -17,20 +17,16 @@ public class FormIngreso extends javax.swing.JFrame {
      * Creates new form FormIngreso
      */
     
-    private Cuentas[] cuentas;
-    public static int numeroCuenta;
-    public static float saldo;
+    //private Cuentas[] cuentas;
+    public  int numeroCuenta;
+    public  float saldo;
+    
+    public static int numeroUsuario ;
     private String contrasenia;
     
     public FormIngreso() {
-        initComponents();
+        initComponents();      
         
-        cuentas = new Cuentas[5];
-        cuentas[0] = new Cuentas(1, "1", 100000);
-        cuentas[1] = new Cuentas(1204, "23k2", 1200000);
-        cuentas[2] = new Cuentas(1205, "23k1", 1240000);
-        cuentas[3] = new Cuentas(1206, "23k4", 1300000);
-        cuentas[4] = new Cuentas(1207, "23k5", 1560000);
 
     }
 
@@ -197,10 +193,12 @@ public class FormIngreso extends javax.swing.JFrame {
     private boolean validarCuenta(int numeroCuenta, String contrasenia){
         boolean numeroCuentaValido = true ;
         for (int i = 0; i < 5; i++) {
-            if (cuentas[i].getNumeroCuenta() == numeroCuenta) {
-                if (contrasenia.equals(cuentas[i].getContrasenia())) {
+           
+            if (ProyectoCajeroUTN.cuentas[i].getNumeroCuenta() == numeroCuenta) {
+                if (contrasenia.equals(ProyectoCajeroUTN.cuentas[i].getContrasenia())) {
                     JOptionPane.showMessageDialog(this, "Bienvenido");
-                    saldo = cuentas[i].getMonto();
+                    saldo = ProyectoCajeroUTN.cuentas[i].getMonto();
+                    numeroUsuario= i;
                     return true;
                 }else{
                     JOptionPane.showMessageDialog(this, "Contrenia Incorrecta");

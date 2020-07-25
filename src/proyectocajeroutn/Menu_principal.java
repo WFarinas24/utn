@@ -100,8 +100,8 @@ public class Menu_principal extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnVolver, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                    .addComponent(btnRetirar, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)))
+                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRetirar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -440,7 +440,8 @@ public class Menu_principal extends javax.swing.JFrame {
         btnRetirar.setEnabled(false);
         btnDepositar.setEnabled(false);
         
-        jTextArea1.setText("El balance de la cuenta es de \n" + FormIngreso.saldo);
+        jTextArea1.setText("El balance de la cuenta es de \n" + ProyectoCajeroUTN.cuentas[FormIngreso.numeroUsuario].getMonto());
+        
     }//GEN-LAST:event_btnBalanceActionPerformed
 
     /**

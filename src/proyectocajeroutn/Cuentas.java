@@ -13,7 +13,7 @@ public class Cuentas {
     private int numeroCuenta;
     private String contrasenia;
     private float monto;
-
+    
     public Cuentas(int numeroCuenta, String contrasenia, float monto) {
         this.numeroCuenta = numeroCuenta;
         this.contrasenia = contrasenia;

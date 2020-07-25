@@ -351,10 +351,16 @@ public class Menu_principal extends javax.swing.JFrame {
     private void btnRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarActionPerformed
         // TODO add your handling code here:
         transaccion = "Retirar";
-         btnBalance.setEnabled(false);
+        btnBalance.setEnabled(false);
         btnDepositar.setEnabled(false);
         
-        jTextArea1.setText("Retirar Dinero \n ingresa la cantidad de dinero que quieres retirar \n> " + monto );
+        if (btnRetirar.getText().equals("Aceptar")) {
+            jTextArea1.setText("Esta seguro que desea retirar \n> " + monto+" ?" );        
+      
+        }else{
+            jTextArea1.setText("Retirar Dinero \n ingresa la cantidad de dinero que quieres retirar \n> " + monto );        
+        }
+        btnRetirar.setText("Aceptar");
         
     }//GEN-LAST:event_btnRetirarActionPerformed
 
@@ -431,6 +437,7 @@ public class Menu_principal extends javax.swing.JFrame {
         btnRetirar.setEnabled(true);
          btnBalance.setEnabled(true);
         btnDepositar.setEnabled(true);
+        btnRetirar.setText("Retirar");
         monto = "";
         jTextArea1.setText("            [Cajero automatico]\n" +"  <-- Depositar Dinero\n" +"         \n" +"\n" +"                               Retirar Dinero -->\n" +"   \n" +"                                           Volver --->");
     }//GEN-LAST:event_btnVolverActionPerformed

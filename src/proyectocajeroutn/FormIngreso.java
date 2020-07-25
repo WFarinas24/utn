@@ -25,7 +25,8 @@ public class FormIngreso extends javax.swing.JFrame {
     private String contrasenia;
     
     public FormIngreso() {
-        initComponents();      
+        initComponents();
+        lblNuevaContrasenia.setVisible(false);
         
 
     }
@@ -44,9 +45,11 @@ public class FormIngreso extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jtextNumeroCuenta = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        lblNuevaContrasenia = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         JtextContrasenia = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,15 +71,21 @@ public class FormIngreso extends javax.swing.JFrame {
             }
         });
 
+        jtextNumeroCuenta.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtextNumeroCuentaFocusGained(evt);
+            }
+        });
+        jtextNumeroCuenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtextNumeroCuentaMouseClicked(evt);
+            }
+        });
         jtextNumeroCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtextNumeroCuentaActionPerformed(evt);
             }
         });
-
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel2.setText("Contraseña");
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectocajeroutn/Cancel_icon-icons.com_73703.png"))); // NOI18N
         jButton2.setText("Cancelar");
@@ -86,6 +95,40 @@ public class FormIngreso extends javax.swing.JFrame {
             }
         });
 
+        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
+
+        lblNuevaContrasenia.setForeground(new java.awt.Color(204, 204, 204));
+        lblNuevaContrasenia.setText("Establecer nueva contrasenia");
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel2.setText("Contraseña");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblNuevaContrasenia))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(JtextContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblNuevaContrasenia)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(JtextContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -94,35 +137,30 @@ public class FormIngreso extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(JtextContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtextNumeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jtextNumeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jtextNumeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JtextContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
+                    .addComponent(jtextNumeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(21, 21, 21)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectocajeroutn/loginmanager_10029.png"))); // NOI18N
@@ -131,23 +169,24 @@ public class FormIngreso extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(88, 88, 88))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addGap(55, 55, 55))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -161,7 +200,7 @@ public class FormIngreso extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -174,24 +213,58 @@ public class FormIngreso extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(validarCuenta(Integer.parseInt(jtextNumeroCuenta.getText()), JtextContrasenia.getText())){
+        //mayusculaMinuscula(jtextNumeroCuenta.getText());
+        if( validarCuenta(Integer.parseInt(jtextNumeroCuenta.getText()), JtextContrasenia.getText())){
             new Menu_principal().setVisible(true);
-            numeroCuenta = Integer.parseInt(jtextNumeroCuenta.getText());
-           
+            numeroCuenta = Integer.parseInt(jtextNumeroCuenta.getText());           
             this.dispose();
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private boolean mayusculaMinuscula(String cad ){
+        lblNuevaContrasenia.setVisible(true);
+        char[] letras;
+        //letras = new char[cad.length()];
+        letras = cad.toCharArray();
+        boolean minuscula = false;
+        boolean mayuscula = false;
+        for (int i = 0; i < cad.length() ; i++) {
+            if (Character.isUpperCase(letras[i])) {
+                mayuscula = true;
+            }else if (Character.isLowerCase(letras[i])) {
+                minuscula = true;
+            }
+        }
+        if (mayuscula && minuscula) {
+            return true;
+        }
+        return false; 
+    }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         jtextNumeroCuenta.setText("");
         JtextContrasenia.setText("");
-        JOptionPane.showMessageDialog(this,"Vuelva a escribir su usuario y contraseña");
+        System.exit(0);
+        //JOptionPane.showMessageDialog(this,"Vuelva a escribir su usuario y contraseña");
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jtextNumeroCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtextNumeroCuentaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtextNumeroCuentaMouseClicked
+
+    private void jtextNumeroCuentaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtextNumeroCuentaFocusGained
+        // TODO add your handling code here:
+        lblNuevaContrasenia.setVisible(false);
+    }//GEN-LAST:event_jtextNumeroCuentaFocusGained
 
     private boolean validarCuenta(int numeroCuenta, String contrasenia){
         boolean numeroCuentaValido = true ;
+        if (contrasenia.length() <8) {
+            JOptionPane.showMessageDialog(null, "La longitud de la contrasenia es menor a 8\nVuelve a ingresarla");
+            return false;
+        }
+        
         for (int i = 0; i < 5; i++) {
            
             if (ProyectoCajeroUTN.cuentas[i].getNumeroCuenta() == numeroCuenta) {
@@ -200,7 +273,29 @@ public class FormIngreso extends javax.swing.JFrame {
                     saldo = ProyectoCajeroUTN.cuentas[i].getMonto();
                     numeroUsuario= i;
                     return true;
-                }else{
+                }else if ("-".equals(ProyectoCajeroUTN.cuentas[i].getContrasenia())) {
+                     lblNuevaContrasenia.setVisible(true);
+                     
+                    if(mayusculaMinuscula(contrasenia)){
+                        
+                        if (alterNumChar(contrasenia)) {
+                            ProyectoCajeroUTN.cuentas[i].setContrasenia(contrasenia);
+                            saldo = ProyectoCajeroUTN.cuentas[i].getMonto();
+                            numeroUsuario= i;
+                            JOptionPane.showMessageDialog(null, "La contraseña se ha modificado \nLa proxima vez se usara la ingresada");
+                            return true;
+                        }else{
+                            
+                            return false;
+                        }                       
+                        
+                    }else{
+                        JOptionPane.showMessageDialog(this, "Ingresa una contraseina que contenga por lo menos \n una letra"
+                                + "mayuscula y una minusculaa");
+                    }
+                    return false;
+                }
+                else{
                     JOptionPane.showMessageDialog(this, "Contrenia Incorrecta");
                 }
             }else{
@@ -212,6 +307,44 @@ public class FormIngreso extends javax.swing.JFrame {
         }
         return false;
         
+    }
+    private boolean alterNumChar(String cad){
+        lblNuevaContrasenia.setVisible(true);
+        char[] letras; // creamos un nuevo vector de char, para poder recorrer nuesto string
+        //letras = new char[cad.length()];
+        letras = cad.toCharArray(); // convertimos el string un arreglo de chars
+        boolean letra = false;
+        boolean numero = false;
+        if (Character.isDigit(letras[0])) {
+            numero=true;
+            ///JOptionPane.showMessageDialog(null, "Primera es numero");
+        }else if( Character.isLetter(letras[0]) ){
+            //JOptionPane.showMessageDialog(null, "Primera es letra");
+            letra = true;
+        }else{
+            JOptionPane.showMessageDialog(null, "Ingresa letras o numero por favor");
+            return false;
+        }
+        
+        for (int i = 1; i < cad.length() ; i++) {
+            if (Character.isDigit(letras[i]) && letra  && !numero) {
+                numero = true;
+                letra = false;
+            }else if (Character.isLetter(letras[i]) && !letra  && numero) {
+                letra = true;
+                numero = false;
+            }else{
+                JOptionPane.showMessageDialog(null, " Alterna solo entre numero y letras por favor, no consecutivos");
+                return false;
+            }
+        }
+        
+        if (letra !=  numero) {
+            return true;
+        }else{
+            JOptionPane.showMessageDialog(null, " Alterna entre numero y letras por favor");
+        }        
+        return false;
     }
     
     /**
@@ -258,6 +391,8 @@ public class FormIngreso extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jtextNumeroCuenta;
+    private javax.swing.JLabel lblNuevaContrasenia;
     // End of variables declaration//GEN-END:variables
 }

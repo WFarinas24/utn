@@ -11,7 +11,8 @@ package proyectocajeroutn;
  */
 public class Menu_principal extends javax.swing.JFrame {
 
-    private  String transaccion ="";
+    private String transaccion = "";
+
     /**
      * Creates new form Menu_principal
      */
@@ -64,7 +65,7 @@ public class Menu_principal extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setForeground(new java.awt.Color(0, 255, 0));
         jTextArea1.setRows(5);
-        jTextArea1.setText("            [Cajero automatico]\n  <-- Depositar Dinero\n         \n\n                               Retirar Dinero -->\n   \n  <-- Ver balance               Volver --->");
+        jTextArea1.setText("            [Cajero automatico]\n  <-- Depositar Dinero\n         \n\n                               Retirar Dinero -->\n   \n  <-- Ver balance               Salir   --->");
         jScrollPane1.setViewportView(jTextArea1);
 
         jPanel5.setBackground(new java.awt.Color(51, 51, 51));
@@ -85,7 +86,7 @@ public class Menu_principal extends javax.swing.JFrame {
         btnVolver.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(102, 102, 102));
         btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectocajeroutn/Deposit_icon-icons.com_56681.png"))); // NOI18N
-        btnVolver.setText("Volver");
+        btnVolver.setText("Salir");
         btnVolver.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -338,117 +339,135 @@ public class Menu_principal extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        monto += 5+"";
-        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto );
+        monto += 5 + "";
+        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         // TODO add your handling code here:
-        monto += 0+"";
-        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto );
+        monto += 0 + "";
+        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto);
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void btnRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarActionPerformed
         // TODO add your handling code here:
         transaccion = "Retirar";
+        btnVolver.setText("Volver");
         btnBalance.setEnabled(false);
         btnDepositar.setEnabled(false);
-        
+
         if (btnRetirar.getText().equals("Aceptar")) {
-            jTextArea1.setText("Esta seguro que desea retirar \n> " + monto+" ?" );        
-      
-        }else{
-            jTextArea1.setText("Retirar Dinero \n ingresa la cantidad de dinero que quieres retirar \n> " + monto );        
+            jTextArea1.setText("Esta seguro que desea retirar \n> " + monto + " ?");
+
+        } else {
+            jTextArea1.setText("Retirar Dinero \n ingresa la cantidad de dinero que quieres retirar \n> " + monto);
         }
         btnRetirar.setText("Aceptar");
-        
+
     }//GEN-LAST:event_btnRetirarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        monto += 1+"";
-        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto );
-        
-        
-        
+        monto += 1 + "";
+        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto);
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        monto += 2+"";
-        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto );
+        monto += 2 + "";
+        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        monto += 3+"";
-        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto );
-        
+        monto += 3 + "";
+        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto);
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        monto += 4+"";
-        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto );
+        monto += 4 + "";
+        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        monto += 6+"";
-        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto );
+        monto += 6 + "";
+        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-        monto += 7+"";
-        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto );
+        monto += 7 + "";
+        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
-        monto += 8+"";
-        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto );
+        monto += 8 + "";
+        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
-        monto += 9+"";
-        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto );
+        monto += 9 + "";
+        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto);
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
-        monto = monto.substring(0, monto.length()-1);
-        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto );
+        monto = monto.substring(0, monto.length() - 1);
+        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto);
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarActionPerformed
         // TODO add your handling code here:
-        transaccion ="Depositar";
+        transaccion = "Depositar";
+        btnVolver.setText("Volver");
         btnBalance.setEnabled(false);
-        monto = "" ;
+        monto = "";
         btnRetirar.setEnabled(false);
-        jTextArea1.setText(transaccion +" Dinero \n ingresa la cantidad de dinero que quieres retirar \n> " + monto );
-        
+        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad de dinero que quieres retirar \n> " + monto);
+
     }//GEN-LAST:event_btnDepositarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         // TODO add your handling code here:
         btnRetirar.setEnabled(true);
-         btnBalance.setEnabled(true);
+        btnBalance.setEnabled(true);
         btnDepositar.setEnabled(true);
         btnRetirar.setText("Retirar");
-        monto = "";
-        jTextArea1.setText("            [Cajero automatico]\n" +"  <-- Depositar Dinero\n" +"         \n" +"\n" +"                               Retirar Dinero -->\n" +"   \n" +"                                           Volver --->");
+        btnDepositar.setText("Depositar");
+        
+        if (btnVolver.getText().equals("Salir")) {
+            new FormIngreso().setVisible(true);
+            this.dispose();
+        }else{
+            btnVolver.setText("Salir");
+            monto = "";
+            jTextArea1.setText("            [Cajero automatico]\n"
+                    + "  <-- Depositar Dinero\n"
+                    + "         \n"
+                    + "\n"
+                    + "                               Retirar Dinero -->\n"
+                    + "   \n"
+                    + "  <-- Ver balance               Salir   --->");
+        }
+        
+        
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnBalanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBalanceActionPerformed
         // TODO add your handling code here:
         btnRetirar.setEnabled(false);
         btnDepositar.setEnabled(false);
-        
+        btnVolver.setText("Volver");
+
         jTextArea1.setText("El balance de la cuenta es de \n" + ProyectoCajeroUTN.cuentas[FormIngreso.numeroUsuario].getMonto());
-        
+
     }//GEN-LAST:event_btnBalanceActionPerformed
 
     /**
@@ -486,8 +505,8 @@ public class Menu_principal extends javax.swing.JFrame {
         });
     }
 
-    private String monto ;
-    
+    private String monto;
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBalance;
     private javax.swing.JButton btnDepositar;

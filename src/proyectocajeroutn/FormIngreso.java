@@ -5,6 +5,8 @@
  */
 package proyectocajeroutn;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,10 +21,8 @@ public class FormIngreso extends javax.swing.JFrame {
     
     //private Cuentas[] cuentas;
     public  int numeroCuenta;
-    public  float saldo;
-    
+   
     public static int numeroUsuario ;
-    private String contrasenia;
     
     public FormIngreso() {
         initComponents();
@@ -214,11 +214,16 @@ public class FormIngreso extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //mayusculaMinuscula(jtextNumeroCuenta.getText());
-        if( validarCuenta(Integer.parseInt(jtextNumeroCuenta.getText()), JtextContrasenia.getText())){
-            new Menu_principal().setVisible(true);
-            numeroCuenta = Integer.parseInt(jtextNumeroCuenta.getText());           
-            this.dispose();
-        }
+        try {
+                jtextNumeroCuenta.setText(jtextNumeroCuenta.getText().trim());
+                if( validarCuenta(Integer.parseInt(jtextNumeroCuenta.getText().trim()), JtextContrasenia.getText().trim())){
+                new Menu_principal().setVisible(true);              
+                this.dispose();               
+            }
+            
+        }catch(NumberFormatException e ){
+            JOptionPane.showMessageDialog(null, "La cuenta está conformada por solo numeros\nRevisa tu numero de cuenta \n"  + e);
+        }      
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -263,40 +268,39 @@ public class FormIngreso extends javax.swing.JFrame {
         if (contrasenia.length() <8) {
             JOptionPane.showMessageDialog(null, "La longitud de la contrasenia es menor a 8\nVuelve a ingresarla");
             return false;
-        }
-        
+        }        
         for (int i = 0; i < 5; i++) {
            
             if (ProyectoCajeroUTN.cuentas[i].getNumeroCuenta() == numeroCuenta) {
                 if (contrasenia.equals(ProyectoCajeroUTN.cuentas[i].getContrasenia())) {
-                    JOptionPane.showMessageDialog(this, "Bienvenido");
-                    saldo = ProyectoCajeroUTN.cuentas[i].getMonto();
+                    JOptionPane.showMessageDialog(this, "Bienvenido");                    
                     numeroUsuario= i;
                     return true;
                 }else if ("-".equals(ProyectoCajeroUTN.cuentas[i].getContrasenia())) {
-                     lblNuevaContrasenia.setVisible(true);
-                     
+                     lblNuevaContrasenia.setVisible(true);                     
                     if(mayusculaMinuscula(contrasenia)){
                         
-                        if (alterNumChar(contrasenia)) {
-                            ProyectoCajeroUTN.cuentas[i].setContrasenia(contrasenia);
-                            saldo = ProyectoCajeroUTN.cuentas[i].getMonto();
-                            numeroUsuario= i;
-                            JOptionPane.showMessageDialog(null, "La contraseña se ha modificado \nLa proxima vez se usara la ingresada");
-                            return true;
-                        }else{
-                            
-                            return false;
-                        }                       
-                        
+                         try {
+                             if (alterNumChar(contrasenia)) {
+                                 ProyectoCajeroUTN.cuentas[i].setContrasenia(contrasenia);                                
+                                 numeroUsuario= i;
+                                 JOptionPane.showMessageDialog(null, "La contraseña se ha modificado \nLa proxima vez se usara la ingresada");
+                                 return true;
+                             }else{
+                                 
+                                 return false;                       
+                             }
+                         } catch (Exception ex) {
+                             JOptionPane.showMessageDialog(null, ex);
+                         }                        
                     }else{
-                        JOptionPane.showMessageDialog(this, "Ingresa una contraseina que contenga por lo menos \n una letra"
-                                + "mayuscula y una minusculaa");
+                        JOptionPane.showMessageDialog(this, "Ingresa una contrasenia que contenga por lo menos \n una letra"
+                                + " mayuscula y una minuscula");
                     }
                     return false;
                 }
                 else{
-                    JOptionPane.showMessageDialog(this, "Contrenia Incorrecta");
+                    JOptionPane.showMessageDialog(this, "Contrasenia Incorrecta");
                 }
             }else{
                numeroCuentaValido = false;
@@ -305,27 +309,23 @@ public class FormIngreso extends javax.swing.JFrame {
         if (!numeroCuentaValido) {
             JOptionPane.showMessageDialog(this, "Cuenta no valida \n Vuelve a ingresar los datos");
         }
-        return false;
-        
+        return false;        
     }
-    private boolean alterNumChar(String cad){
+    private boolean alterNumChar(String cad) throws Exception{
         lblNuevaContrasenia.setVisible(true);
         char[] letras; // creamos un nuevo vector de char, para poder recorrer nuesto string
-        //letras = new char[cad.length()];
+       
         letras = cad.toCharArray(); // convertimos el string un arreglo de chars
         boolean letra = false;
         boolean numero = false;
         if (Character.isDigit(letras[0])) {
-            numero=true;
-            ///JOptionPane.showMessageDialog(null, "Primera es numero");
-        }else if( Character.isLetter(letras[0]) ){
-            //JOptionPane.showMessageDialog(null, "Primera es letra");
+            numero=true;           
+        }else if( Character.isLetter(letras[0]) ){            
             letra = true;
         }else{
-            JOptionPane.showMessageDialog(null, "Ingresa letras o numero por favor");
-            return false;
-        }
-        
+            throw new Exception( "Ingresa letras o numero por favor" );
+            
+        }        
         for (int i = 1; i < cad.length() ; i++) {
             if (Character.isDigit(letras[i]) && letra  && !numero) {
                 numero = true;
@@ -334,17 +334,15 @@ public class FormIngreso extends javax.swing.JFrame {
                 letra = true;
                 numero = false;
             }else{
-                JOptionPane.showMessageDialog(null, " Alterna solo entre numero y letras por favor, no consecutivos");
-                return false;
+                throw new Exception( " Alterna solo entre numero y letras por favor, no consecutivos" );                
             }
-        }
-        
+        }        
         if (letra !=  numero) {
             return true;
         }else{
-            JOptionPane.showMessageDialog(null, " Alterna entre numero y letras por favor");
+            throw new Exception( "Alterna entre numero y letras por favor " );
+            
         }        
-        return false;
     }
     
     /**

@@ -5,6 +5,10 @@
  */
 package proyectocajeroutn;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author William
@@ -38,6 +42,7 @@ public class Menu_principal extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         btnRetirar = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
+        btnDolares = new javax.swing.JButton();
         panelNumeros = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -67,7 +72,7 @@ public class Menu_principal extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setForeground(new java.awt.Color(0, 255, 0));
         jTextArea1.setRows(5);
-        jTextArea1.setText("            [Cajero automatico]\n  <-- Depositar Dinero\n         \n\n                               Retirar Dinero -->\n   \n  <-- Ver balance               Salir   --->");
+        jTextArea1.setText("            [Cajero automatico]\n  <-- Depositar Dinero\n                                         Dolares-->\n\n                             Retirar Dinero -->\n   \n  <-- Ver balance             Salir   --->");
         jScrollPane1.setViewportView(jTextArea1);
 
         jPanel5.setBackground(new java.awt.Color(51, 51, 51));
@@ -96,22 +101,37 @@ public class Menu_principal extends javax.swing.JFrame {
             }
         });
 
+        btnDolares.setBackground(new java.awt.Color(102, 255, 102));
+        btnDolares.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnDolares.setForeground(new java.awt.Color(102, 102, 102));
+        btnDolares.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectocajeroutn/Deposit_icon-icons.com_56681.png"))); // NOI18N
+        btnDolares.setText("Dolares");
+        btnDolares.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDolares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDolaresActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRetirar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btnDolares, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRetirar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addComponent(btnDolares)
+                .addGap(7, 7, 7)
                 .addComponent(btnRetirar)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnVolver)
                 .addContainerGap(20, Short.MAX_VALUE))
         );
@@ -369,26 +389,27 @@ public class Menu_principal extends javax.swing.JFrame {
             jTextArea1.setText("Esta seguro que desea retirar \n> " + monto + " ?");
             enabledBotones(false);
             btnRetirar.setText("Si");
-             
-        } else if( btnRetirar.getText().equals("Si") ){
+
+        } else if (btnRetirar.getText().equals("Si")) {
             String estado = "Retirado";
             try {
-                ProyectoCajeroUTN.cuentas[FormIngreso.numeroUsuario ].setMonto( ProyectoCajeroUTN.cuentas[FormIngreso.numeroUsuario ].getMonto()-Integer.parseInt(monto));
+                ProyectoCajeroUTN.cuentas[FormIngreso.numeroUsuario].retirar(Integer.parseInt(monto));
+                //ProyectoCajeroUTN.cuentas[FormIngreso.numeroUsuario ].setMonto( ProyectoCajeroUTN.cuentas[FormIngreso.numeroUsuario ].getMonto()-Integer.parseInt(monto));
                 btnRetirar.setEnabled(false);
             } catch (Exception e) {
-                estado ="No retirado ";
-                
-            }finally{
-                jTextArea1.setText("Monto "+ estado+" \n> " + monto + " \n presiona el boton Volver para salir \n");
+
+                estado = "No retirado " + e;
+
+            } finally {
+                jTextArea1.setText("Monto " + estado + " \n> " + monto + " \n presiona el boton Volver para salir \n");
             }
-            
-        }else 
-        {
-             enabledBotones(true);
+
+        } else {
+            enabledBotones(true);
             jTextArea1.setText("Retirar Dinero \n ingresa la cantidad de dinero \nque quieres retirar \n> " + monto);
-             btnRetirar.setText("Aceptar");
+            btnRetirar.setText("Aceptar");
         }
-       
+
 
     }//GEN-LAST:event_btnRetirarActionPerformed
 
@@ -445,8 +466,10 @@ public class Menu_principal extends javax.swing.JFrame {
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
-        monto = monto.substring(0, monto.length() - 1);
-        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto);
+        if (monto.length() >= 1) {
+            monto = monto.substring(0, monto.length() - 1);
+            jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto);
+        }
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarActionPerformed
@@ -455,36 +478,49 @@ public class Menu_principal extends javax.swing.JFrame {
         btnVolver.setText("Volver");
         btnBalance.setEnabled(false);
         btnRetirar.setEnabled(false);
-        
+
         if (btnDepositar.getText().equals("Aceptar")) {
             jTextArea1.setText("Esta seguro que desea Depositar \n> " + monto + " ?");
             enabledBotones(false);
-        }else{
+            btnDepositar.setText("Si");
+        } else if (btnDepositar.getText().equals("Si")) {
+            String estado = "Depositado";
+            try {
+                ProyectoCajeroUTN.cuentas[FormIngreso.numeroUsuario].depositar(Integer.parseInt(monto));
+                //ProyectoCajeroUTN.cuentas[FormIngreso.numeroUsuario ].setMonto( ProyectoCajeroUTN.cuentas[FormIngreso.numeroUsuario ].getMonto()-Integer.parseInt(monto));
+                btnDepositar.setEnabled(false);
+            } catch (Exception e) {
+                estado = "No retirado ";
+
+            } finally {
+                jTextArea1.setText("Monto " + estado + " \n> " + monto + " \n presiona el boton Volver para salir \n");
+            }
+        } else {
             enabledBotones(true);
             monto = "";
             jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad de dinero que quieres retirar \n> " + monto);
 
             btnDepositar.setText("Aceptar");
         }
-        
+
     }//GEN-LAST:event_btnDepositarActionPerformed
 
-    private void enabledBotones(boolean estado){
+    private void enabledBotones(boolean estado) {
         jButton2.setEnabled(estado);
         jButton3.setEnabled(estado);
         jButton4.setEnabled(estado);
         jButton5.setEnabled(estado);
-        
+
         jButton6.setEnabled(estado);
         jButton7.setEnabled(estado);
         jButton8.setEnabled(estado);
         jButton9.setEnabled(estado);
-        
+
         jButton10.setEnabled(estado);
         jButton11.setEnabled(estado);
         jButton12.setEnabled(estado);
         jButton13.setEnabled(estado);
-        
+
     }
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         // TODO add your handling code here:
@@ -493,24 +529,24 @@ public class Menu_principal extends javax.swing.JFrame {
         btnDepositar.setEnabled(true);
         btnRetirar.setText("Retirar");
         btnDepositar.setText("Depositar");
-         enabledBotones(false);
-        
+        enabledBotones(false);
+
         if (btnVolver.getText().equals("Salir")) {
             new FormIngreso().setVisible(true);
             this.dispose();
-        }else{
+        } else {
             btnVolver.setText("Salir");
             monto = "";
             jTextArea1.setText("            [Cajero automatico]\n"
                     + "  <-- Depositar Dinero\n"
-                    + "         \n"
+                    + "                                         Dolares-->\n"
                     + "\n"
-                    + "                               Retirar Dinero -->\n"
+                    + "                             Retirar Dinero -->\n"
                     + "   \n"
-                    + "  <-- Ver balance               Salir   --->");
+                    + "  <-- Ver balance             Salir   --->");
         }
-        
-        
+
+
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnBalanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBalanceActionPerformed
@@ -521,6 +557,25 @@ public class Menu_principal extends javax.swing.JFrame {
         jTextArea1.setText("El balance de la cuenta es de \n >" + ProyectoCajeroUTN.cuentas[FormIngreso.numeroUsuario].getMonto() + "\n Presiona el boton Volver\n Para regresar al menu principal");
 
     }//GEN-LAST:event_btnBalanceActionPerformed
+
+    private void menuDolares() {
+        jTextArea1.setText("   Menu Dolares  \n Comprar  \n Vender ");
+    }
+    private void btnDolaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDolaresActionPerformed
+        // desactivamos los botones
+        btnVolver.setText("Volver");
+        btnBalance.setEnabled(false);
+        btnRetirar.setEnabled(false);
+        btnDepositar.setEnabled(false);
+
+        if (ProyectoCajeroUTN.cuentas[FormIngreso.numeroUsuario].getDolares() != null) { // en caso de que ya se tenga una cuenta en dolares
+            menuDolares();
+        } else { // en caso de que no se tenga una cuenta dolares se le debe de crear
+            ProyectoCajeroUTN.cuentas[FormIngreso.numeroUsuario].setDolares(new CuentaDolares(0, "-", 0, FormIngreso.numeroUsuario));
+            jTextArea1.setText("      Menu Dolares \nSe esta creando su cuenta\nen dolares a quedado, \nasociada a esta cuenta\npresiona nuevamente el boton\nDolares");
+        }
+
+    }//GEN-LAST:event_btnDolaresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -562,6 +617,7 @@ public class Menu_principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBalance;
     private javax.swing.JButton btnDepositar;
+    private javax.swing.JButton btnDolares;
     private javax.swing.JButton btnRetirar;
     private javax.swing.JButton btnVolver;
     private javax.swing.JButton jButton10;

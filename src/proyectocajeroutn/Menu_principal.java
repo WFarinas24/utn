@@ -18,6 +18,7 @@ public class Menu_principal extends javax.swing.JFrame {
      */
     public Menu_principal() {
         initComponents();
+        enabledBotones(false);
         monto = "";
     }
 
@@ -37,7 +38,7 @@ public class Menu_principal extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         btnRetirar = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        panelNumeros = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -49,6 +50,7 @@ public class Menu_principal extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         btnDepositar = new javax.swing.JButton();
         btnBalance = new javax.swing.JButton();
@@ -114,7 +116,8 @@ public class Menu_principal extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        jPanel3.setLayout(new java.awt.GridLayout(4, 4));
+        panelNumeros.setBackground(new java.awt.Color(51, 51, 51));
+        panelNumeros.setLayout(new java.awt.GridLayout(4, 4, 2, 2));
 
         jButton2.setBackground(new java.awt.Color(0, 51, 51));
         jButton2.setForeground(new java.awt.Color(102, 102, 102));
@@ -124,7 +127,7 @@ public class Menu_principal extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton2);
+        panelNumeros.add(jButton2);
 
         jButton3.setBackground(new java.awt.Color(0, 51, 51));
         jButton3.setForeground(new java.awt.Color(102, 102, 102));
@@ -134,7 +137,7 @@ public class Menu_principal extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton3);
+        panelNumeros.add(jButton3);
 
         jButton4.setBackground(new java.awt.Color(0, 51, 51));
         jButton4.setForeground(new java.awt.Color(102, 102, 102));
@@ -144,7 +147,7 @@ public class Menu_principal extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton4);
+        panelNumeros.add(jButton4);
 
         jButton5.setBackground(new java.awt.Color(0, 51, 51));
         jButton5.setForeground(new java.awt.Color(102, 102, 102));
@@ -154,7 +157,7 @@ public class Menu_principal extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton5);
+        panelNumeros.add(jButton5);
 
         jButton6.setBackground(new java.awt.Color(0, 51, 51));
         jButton6.setForeground(new java.awt.Color(102, 102, 102));
@@ -164,7 +167,7 @@ public class Menu_principal extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton6);
+        panelNumeros.add(jButton6);
 
         jButton7.setBackground(new java.awt.Color(0, 51, 51));
         jButton7.setForeground(new java.awt.Color(102, 102, 102));
@@ -174,7 +177,7 @@ public class Menu_principal extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton7);
+        panelNumeros.add(jButton7);
 
         jButton8.setBackground(new java.awt.Color(0, 51, 51));
         jButton8.setForeground(new java.awt.Color(102, 102, 102));
@@ -184,7 +187,7 @@ public class Menu_principal extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton8);
+        panelNumeros.add(jButton8);
 
         jButton9.setBackground(new java.awt.Color(0, 51, 51));
         jButton9.setForeground(new java.awt.Color(102, 102, 102));
@@ -194,7 +197,7 @@ public class Menu_principal extends javax.swing.JFrame {
                 jButton9ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton9);
+        panelNumeros.add(jButton9);
 
         jButton10.setBackground(new java.awt.Color(0, 51, 51));
         jButton10.setForeground(new java.awt.Color(102, 102, 102));
@@ -204,7 +207,7 @@ public class Menu_principal extends javax.swing.JFrame {
                 jButton10ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton10);
+        panelNumeros.add(jButton10);
 
         jButton11.setBackground(new java.awt.Color(0, 51, 51));
         jButton11.setFont(new java.awt.Font("Dialog", 1, 8)); // NOI18N
@@ -215,7 +218,7 @@ public class Menu_principal extends javax.swing.JFrame {
                 jButton11ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton11);
+        panelNumeros.add(jButton11);
 
         jButton12.setBackground(new java.awt.Color(0, 51, 51));
         jButton12.setForeground(new java.awt.Color(102, 102, 102));
@@ -225,7 +228,12 @@ public class Menu_principal extends javax.swing.JFrame {
                 jButton12ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton12);
+        panelNumeros.add(jButton12);
+
+        jButton13.setBackground(new java.awt.Color(0, 51, 51));
+        jButton13.setFont(new java.awt.Font("Dialog", 1, 8)); // NOI18N
+        jButton13.setForeground(new java.awt.Color(102, 102, 102));
+        panelNumeros.add(jButton13);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -233,9 +241,9 @@ public class Menu_principal extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(panelNumeros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -248,7 +256,8 @@ public class Menu_principal extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
+                .addComponent(panelNumeros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
@@ -358,11 +367,28 @@ public class Menu_principal extends javax.swing.JFrame {
 
         if (btnRetirar.getText().equals("Aceptar")) {
             jTextArea1.setText("Esta seguro que desea retirar \n> " + monto + " ?");
-
-        } else {
-            jTextArea1.setText("Retirar Dinero \n ingresa la cantidad de dinero que quieres retirar \n> " + monto);
+            enabledBotones(false);
+            btnRetirar.setText("Si");
+             
+        } else if( btnRetirar.getText().equals("Si") ){
+            String estado = "Retirado";
+            try {
+                ProyectoCajeroUTN.cuentas[FormIngreso.numeroUsuario ].setMonto( ProyectoCajeroUTN.cuentas[FormIngreso.numeroUsuario ].getMonto()-Integer.parseInt(monto));
+                btnRetirar.setEnabled(false);
+            } catch (Exception e) {
+                estado ="No retirado ";
+                
+            }finally{
+                jTextArea1.setText("Monto "+ estado+" \n> " + monto + " \n presiona el boton Volver para salir \n");
+            }
+            
+        }else 
+        {
+             enabledBotones(true);
+            jTextArea1.setText("Retirar Dinero \n ingresa la cantidad de dinero \nque quieres retirar \n> " + monto);
+             btnRetirar.setText("Aceptar");
         }
-        btnRetirar.setText("Aceptar");
+       
 
     }//GEN-LAST:event_btnRetirarActionPerformed
 
@@ -428,12 +454,38 @@ public class Menu_principal extends javax.swing.JFrame {
         transaccion = "Depositar";
         btnVolver.setText("Volver");
         btnBalance.setEnabled(false);
-        monto = "";
         btnRetirar.setEnabled(false);
-        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad de dinero que quieres retirar \n> " + monto);
+        
+        if (btnDepositar.getText().equals("Aceptar")) {
+            jTextArea1.setText("Esta seguro que desea Depositar \n> " + monto + " ?");
+            enabledBotones(false);
+        }else{
+            enabledBotones(true);
+            monto = "";
+            jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad de dinero que quieres retirar \n> " + monto);
 
+            btnDepositar.setText("Aceptar");
+        }
+        
     }//GEN-LAST:event_btnDepositarActionPerformed
 
+    private void enabledBotones(boolean estado){
+        jButton2.setEnabled(estado);
+        jButton3.setEnabled(estado);
+        jButton4.setEnabled(estado);
+        jButton5.setEnabled(estado);
+        
+        jButton6.setEnabled(estado);
+        jButton7.setEnabled(estado);
+        jButton8.setEnabled(estado);
+        jButton9.setEnabled(estado);
+        
+        jButton10.setEnabled(estado);
+        jButton11.setEnabled(estado);
+        jButton12.setEnabled(estado);
+        jButton13.setEnabled(estado);
+        
+    }
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         // TODO add your handling code here:
         btnRetirar.setEnabled(true);
@@ -441,6 +493,7 @@ public class Menu_principal extends javax.swing.JFrame {
         btnDepositar.setEnabled(true);
         btnRetirar.setText("Retirar");
         btnDepositar.setText("Depositar");
+         enabledBotones(false);
         
         if (btnVolver.getText().equals("Salir")) {
             new FormIngreso().setVisible(true);
@@ -465,8 +518,7 @@ public class Menu_principal extends javax.swing.JFrame {
         btnRetirar.setEnabled(false);
         btnDepositar.setEnabled(false);
         btnVolver.setText("Volver");
-
-        jTextArea1.setText("El balance de la cuenta es de \n" + ProyectoCajeroUTN.cuentas[FormIngreso.numeroUsuario].getMonto());
+        jTextArea1.setText("El balance de la cuenta es de \n >" + ProyectoCajeroUTN.cuentas[FormIngreso.numeroUsuario].getMonto() + "\n Presiona el boton Volver\n Para regresar al menu principal");
 
     }//GEN-LAST:event_btnBalanceActionPerformed
 
@@ -515,6 +567,7 @@ public class Menu_principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -525,10 +578,10 @@ public class Menu_principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JPanel panelNumeros;
     // End of variables declaration//GEN-END:variables
 }

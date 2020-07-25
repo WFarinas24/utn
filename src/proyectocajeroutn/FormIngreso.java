@@ -19,17 +19,18 @@ public class FormIngreso extends javax.swing.JFrame {
     
     private Cuentas[] cuentas;
     public static int numeroCuenta;
+    public static float saldo;
     private String contrasenia;
     
     public FormIngreso() {
         initComponents();
         
         cuentas = new Cuentas[5];
-        cuentas[0] = new Cuentas(1, "1");
-        cuentas[1] = new Cuentas(1204, "23k2");
-        cuentas[2] = new Cuentas(1205, "23k1");
-        cuentas[3] = new Cuentas(1206, "23k4");
-        cuentas[4] = new Cuentas(1207, "23k5");
+        cuentas[0] = new Cuentas(1, "1", 100000);
+        cuentas[1] = new Cuentas(1204, "23k2", 1200000);
+        cuentas[2] = new Cuentas(1205, "23k1", 1240000);
+        cuentas[3] = new Cuentas(1206, "23k4", 1300000);
+        cuentas[4] = new Cuentas(1207, "23k5", 1560000);
 
     }
 
@@ -42,6 +43,7 @@ public class FormIngreso extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -54,7 +56,12 @@ public class FormIngreso extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 255, 255));
 
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("Numero Cuenta");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectocajeroutn/log_logout_door_1563.png"))); // NOI18N
@@ -72,6 +79,7 @@ public class FormIngreso extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("Contraseña");
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectocajeroutn/Cancel_icon-icons.com_73703.png"))); // NOI18N
@@ -101,7 +109,7 @@ public class FormIngreso extends javax.swing.JFrame {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,25 +131,42 @@ public class FormIngreso extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectocajeroutn/loginmanager_10029.png"))); // NOI18N
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -156,6 +181,7 @@ public class FormIngreso extends javax.swing.JFrame {
         if(validarCuenta(Integer.parseInt(jtextNumeroCuenta.getText()), JtextContrasenia.getText())){
             new Menu_principal().setVisible(true);
             numeroCuenta = Integer.parseInt(jtextNumeroCuenta.getText());
+           
             this.dispose();
         }
         
@@ -174,6 +200,7 @@ public class FormIngreso extends javax.swing.JFrame {
             if (cuentas[i].getNumeroCuenta() == numeroCuenta) {
                 if (contrasenia.equals(cuentas[i].getContrasenia())) {
                     JOptionPane.showMessageDialog(this, "Bienvenido");
+                    saldo = cuentas[i].getMonto();
                     return true;
                 }else{
                     JOptionPane.showMessageDialog(this, "Contrenia Incorrecta");
@@ -232,6 +259,7 @@ public class FormIngreso extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jtextNumeroCuenta;
     // End of variables declaration//GEN-END:variables
 }

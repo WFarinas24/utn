@@ -14,6 +14,12 @@ public class Cuentas {
     private String contrasenia;
     private float monto;
 
+    public Cuentas(int numeroCuenta, String contrasenia, float monto) {
+        this.numeroCuenta = numeroCuenta;
+        this.contrasenia = contrasenia;
+        this.monto = monto;
+    }
+
     public float getMonto() {
         return monto;
     }
@@ -21,12 +27,7 @@ public class Cuentas {
     public void setMonto(float monto) {
         this.monto = monto;
     }
-
-    public Cuentas(int numeroCuenta, String contrasenia) {
-        this.numeroCuenta = numeroCuenta;
-        this.contrasenia = contrasenia;
-    }
-
+    
     public int getNumeroCuenta() {
         return numeroCuenta;
     }

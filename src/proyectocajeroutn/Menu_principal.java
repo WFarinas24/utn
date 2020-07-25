@@ -11,6 +11,7 @@ package proyectocajeroutn;
  */
 public class Menu_principal extends javax.swing.JFrame {
 
+    private  String transaccion ="";
     /**
      * Creates new form Menu_principal
      */
@@ -33,7 +34,8 @@ public class Menu_principal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jPanel5 = new javax.swing.JPanel();
-        jButton15 = new javax.swing.JButton();
+        btnRetirar = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -47,7 +49,8 @@ public class Menu_principal extends javax.swing.JFrame {
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jButton13 = new javax.swing.JButton();
+        btnDepositar = new javax.swing.JButton();
+        btnBalance = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
@@ -61,20 +64,32 @@ public class Menu_principal extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setForeground(new java.awt.Color(0, 255, 0));
         jTextArea1.setRows(5);
-        jTextArea1.setText("            [Cajero automatico]\n  <-- Depositar Dinero\n          \n\n\n                          Retirar Dinero  --> \n   ");
+        jTextArea1.setText("            [Cajero automatico]\n  <-- Depositar Dinero\n         \n\n                               Retirar Dinero -->\n   \n  <-- Ver balance               Volver --->");
         jScrollPane1.setViewportView(jTextArea1);
 
         jPanel5.setBackground(new java.awt.Color(51, 51, 51));
 
-        jButton15.setBackground(new java.awt.Color(102, 255, 102));
-        jButton15.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton15.setForeground(new java.awt.Color(102, 102, 102));
-        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectocajeroutn/Deposit_icon-icons.com_56681.png"))); // NOI18N
-        jButton15.setText("Retirar ");
-        jButton15.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
+        btnRetirar.setBackground(new java.awt.Color(102, 255, 102));
+        btnRetirar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnRetirar.setForeground(new java.awt.Color(102, 102, 102));
+        btnRetirar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectocajeroutn/Deposit_icon-icons.com_56681.png"))); // NOI18N
+        btnRetirar.setText("Retirar ");
+        btnRetirar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnRetirar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
+                btnRetirarActionPerformed(evt);
+            }
+        });
+
+        btnVolver.setBackground(new java.awt.Color(102, 255, 102));
+        btnVolver.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(102, 102, 102));
+        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectocajeroutn/Deposit_icon-icons.com_56681.png"))); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
             }
         });
 
@@ -82,16 +97,20 @@ public class Menu_principal extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnVolver, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                    .addComponent(btnRetirar, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(jButton15)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addComponent(btnRetirar)
+                .addGap(18, 18, 18)
+                .addComponent(btnVolver)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jPanel3.setLayout(new java.awt.GridLayout(4, 4));
@@ -213,53 +232,68 @@ public class Menu_principal extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap(12, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
 
-        jButton13.setBackground(new java.awt.Color(102, 255, 255));
-        jButton13.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton13.setForeground(new java.awt.Color(102, 102, 102));
-        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectocajeroutn/4288575bankcoindepositmoneypiggysave-115781_115732.png"))); // NOI18N
-        jButton13.setText("Depositar");
-        jButton13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDepositar.setBackground(new java.awt.Color(102, 255, 255));
+        btnDepositar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnDepositar.setForeground(new java.awt.Color(102, 102, 102));
+        btnDepositar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectocajeroutn/4288575bankcoindepositmoneypiggysave-115781_115732.png"))); // NOI18N
+        btnDepositar.setText("Depositar");
+        btnDepositar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDepositar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepositarActionPerformed(evt);
+            }
+        });
+
+        btnBalance.setBackground(new java.awt.Color(102, 255, 255));
+        btnBalance.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnBalance.setForeground(new java.awt.Color(102, 102, 102));
+        btnBalance.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectocajeroutn/4288575bankcoindepositmoneypiggysave-115781_115732.png"))); // NOI18N
+        btnBalance.setText("Balance");
+        btnBalance.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBalance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBalanceActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+            .addComponent(btnDepositar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnBalance, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jButton13)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addComponent(btnDepositar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addComponent(btnBalance)
+                .addGap(38, 38, 38))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -294,10 +328,9 @@ public class Menu_principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -306,24 +339,29 @@ public class Menu_principal extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         monto += 5+"";
-        jTextArea1.setText("Depositar Dinero \n ingresa la cantidad \n> " + monto );
+        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto );
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         // TODO add your handling code here:
         monto += 0+"";
-        jTextArea1.setText("Depositar Dinero \n ingresa la cantidad \n> " + monto );
+        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto );
     }//GEN-LAST:event_jButton12ActionPerformed
 
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+    private void btnRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarActionPerformed
         // TODO add your handling code here:
-        jTextArea1.setText("Depositar Dinero \n ingresa la cantidad \n> " + monto );
-    }//GEN-LAST:event_jButton15ActionPerformed
+        transaccion = "Retirar";
+         btnBalance.setEnabled(false);
+        btnDepositar.setEnabled(false);
+        
+        jTextArea1.setText("Retirar Dinero \n ingresa la cantidad de dinero que quieres retirar \n> " + monto );
+        
+    }//GEN-LAST:event_btnRetirarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         monto += 1+"";
-        jTextArea1.setText("Depositar Dinero \n ingresa la cantidad \n> " + monto );
+        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto );
         
         
         
@@ -332,51 +370,78 @@ public class Menu_principal extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         monto += 2+"";
-        jTextArea1.setText("Depositar Dinero \n ingresa la cantidad \n> " + monto );
+        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto );
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         monto += 3+"";
-        jTextArea1.setText("Depositar Dinero \n ingresa la cantidad \n> " + monto );
+        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto );
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         monto += 4+"";
-        jTextArea1.setText("Depositar Dinero \n ingresa la cantidad \n> " + monto );
+        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto );
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
         monto += 6+"";
-        jTextArea1.setText("Depositar Dinero \n ingresa la cantidad \n> " + monto );
+        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto );
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
         monto += 7+"";
-        jTextArea1.setText("Depositar Dinero \n ingresa la cantidad \n> " + monto );
+        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto );
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
         monto += 8+"";
-        jTextArea1.setText("Depositar Dinero \n ingresa la cantidad \n> " + monto );
+        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto );
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
         monto += 9+"";
-        jTextArea1.setText("Depositar Dinero \n ingresa la cantidad \n> " + monto );
+        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto );
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
         monto = monto.substring(0, monto.length()-1);
-        jTextArea1.setText("Depositar Dinero \n ingresa la cantidad \n> " + monto );
+        jTextArea1.setText(transaccion + " Dinero \n ingresa la cantidad \n> " + monto );
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarActionPerformed
+        // TODO add your handling code here:
+        transaccion ="Depositar";
+        btnBalance.setEnabled(false);
+        monto = "" ;
+        btnRetirar.setEnabled(false);
+        jTextArea1.setText(transaccion +" Dinero \n ingresa la cantidad de dinero que quieres retirar \n> " + monto );
+        
+    }//GEN-LAST:event_btnDepositarActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        // TODO add your handling code here:
+        btnRetirar.setEnabled(true);
+         btnBalance.setEnabled(true);
+        btnDepositar.setEnabled(true);
+        monto = "";
+        jTextArea1.setText("            [Cajero automatico]\n" +"  <-- Depositar Dinero\n" +"         \n" +"\n" +"                               Retirar Dinero -->\n" +"   \n" +"                                           Volver --->");
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnBalanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBalanceActionPerformed
+        // TODO add your handling code here:
+        btnRetirar.setEnabled(false);
+        btnDepositar.setEnabled(false);
+        
+        jTextArea1.setText("El balance de la cuenta es de \n" + FormIngreso.saldo);
+    }//GEN-LAST:event_btnBalanceActionPerformed
 
     /**
      * @param args the command line arguments
@@ -416,11 +481,13 @@ public class Menu_principal extends javax.swing.JFrame {
     private String monto ;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBalance;
+    private javax.swing.JButton btnDepositar;
+    private javax.swing.JButton btnRetirar;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
